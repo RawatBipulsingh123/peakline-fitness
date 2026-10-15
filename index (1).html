@@ -1,0 +1,759 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Peakline Fitness | Gym memberships, classes and protein shop</title>
+<meta name="description" content="Concept website for a neighbourhood gym: membership plans, a live class board, a weekly timetable and a protein shop with cart and WhatsApp ordering. Sample content.">
+<meta name="theme-color" content="#ff5a1f">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Peakline Fitness: show up, the rest gets easier">
+<meta property="og:description" content="Membership plans, coached classes and a protein shop that orders on WhatsApp. A portfolio concept.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23ff5a1f'/%3E%3Cpath d='M4 26 13 10l4.5 7L21 12l7 14z' fill='%2312142b'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600..900&family=Instrument+Sans:wght@400..700&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:light;
+  --peak:#ff5a1f;--peak-text:#bf3a08;--ink:#12142b;--chalk:#eef0f4;--paper:#fff;
+  --steel:#4f546c;--line:#d3d6df;--field:#7a8095;--dim:#2b2f55;--soft:#c9cde6;
+  --green:#13a869;--red:#d62839;--yellow:#f2b200;--blue:#2c5bff;--violet:#6a3df0;
+  --disp:"Big Shoulders Display","Bahnschrift","Arial Narrow","Roboto Condensed",system-ui,sans-serif;
+  --body:"Instrument Sans","Segoe UI",system-ui,-apple-system,Roboto,sans-serif;
+  --focus:var(--ink);
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:76px;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{margin:0;background:var(--chalk);color:var(--ink);font:400 17px/1.55 var(--body)}
+h1,h2,h3,p,ul,ol{margin:0}
+ul,ol{padding:0;list-style:none}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+.nav,.board,.plan.pick,footer{--focus:#fff}
+[hidden]{display:none!important}
+.wrap{width:min(1160px,100% - 48px);margin-inline:auto}
+.skip{position:absolute;left:12px;top:-60px;background:var(--ink);color:#fff;padding:10px 16px;border-radius:4px;z-index:50;font-weight:700}
+.skip:focus{top:12px}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;border:2px solid var(--ink);border-radius:4px;background:var(--peak);color:var(--ink);font:700 1rem/1 var(--body);text-decoration:none;cursor:pointer;transition:background .15s,color .15s,transform .1s}
+.btn:hover{background:var(--ink);color:#fff}
+.btn:active{transform:scale(.98)}
+.btn.ink{background:var(--ink);color:#fff}.btn.ink:hover{background:#fff;color:var(--ink)}
+.btn.line{background:transparent}.btn.line:hover{background:var(--ink);color:#fff}
+.btn.done,.btn.done:hover{background:var(--green);color:var(--ink)}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.link{border:0;background:none;padding:0;font:inherit;font-weight:700;text-decoration:underline;cursor:pointer;color:inherit}
+
+/* Header */
+.nav{position:sticky;top:0;z-index:10;background:var(--ink);color:#fff}
+.nav .wrap{display:flex;align-items:center;gap:20px;min-height:64px}
+.brand{display:flex;align-items:center;gap:10px;font:800 1.55rem/1 var(--disp);letter-spacing:.01em;text-decoration:none}
+.brand svg{width:30px;height:30px;flex:none}
+.menu{display:flex;gap:28px;margin-left:auto}
+.menu a{text-decoration:none;font-weight:500;font-size:.98rem;padding:8px 0;border-bottom:2px solid transparent}
+.menu a:hover{border-color:var(--peak)}
+.cartbtn,.menubtn{display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:0 14px;border:2px solid #fff;border-radius:4px;background:transparent;color:#fff;font:700 .95rem/1 var(--body);cursor:pointer}
+.cartbtn:hover,.menubtn:hover{background:#fff;color:var(--ink)}
+.cartbtn b{background:var(--peak);color:var(--ink);border-radius:99px;min-width:24px;padding:3px 7px;text-align:center;font-size:.85rem}
+.menubtn{display:none}
+@media (max-width:860px){
+  .menubtn{display:inline-flex}
+  .cartbtn{margin-left:auto}
+  .menu{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;margin:0;background:var(--ink);padding:4px 24px 18px;border-top:1px solid var(--dim)}
+  .menu.open{display:flex}
+  .menu a{padding:15px 0;font-size:1.1rem;border-bottom:1px solid var(--dim)}
+}
+
+/* Hero */
+.hero{background:var(--peak)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:56px;align-items:center;padding-block:64px 80px}
+h1{font:900 clamp(3.7rem,9vw,7.2rem)/.88 var(--disp);letter-spacing:-.005em}
+h1 span{display:block}
+.lead{font-size:1.2rem;font-weight:500;max-width:42ch;margin:28px 0 32px}
+@media (max-width:900px){.hero .wrap{grid-template-columns:1fr;gap:40px;padding-block:44px 52px}}
+
+/* Live board */
+.board{background:var(--ink);color:#fff;border-radius:6px;padding:26px}
+.bh{display:flex;justify-content:space-between;align-items:baseline;gap:6px 14px;flex-wrap:wrap}
+.bh h2{font:800 2.3rem/1 var(--disp)}
+.state{display:inline-flex;align-items:center;gap:8px;font-size:.92rem;color:var(--soft)}
+.state::before{content:"";width:9px;height:9px;border-radius:50%;background:#8b90ad}
+.state.open::before{background:var(--green)}
+.next{margin:14px 0 20px;font-weight:600}
+.strip{position:relative;height:10px;background:var(--dim);border-radius:2px;margin-top:8px}
+.strip i{position:absolute;top:0;bottom:0;background:var(--k)}
+.strip b{position:absolute;top:-8px;bottom:-8px;width:3px;margin-left:-1px;background:#fff;border-radius:2px}
+.strip-l{display:flex;justify-content:space-between;margin:6px 0 16px;font-size:.82rem;color:var(--soft)}
+.slot{display:grid;grid-template-columns:104px 1fr auto;gap:12px;align-items:center;padding:13px 0;border-top:1px solid var(--dim)}
+.slot time{font:800 1.5rem/1 var(--disp);letter-spacing:.01em}
+.slot .nm{display:flex;align-items:center;gap:10px}
+.slot .nm::before{content:"";width:10px;height:10px;border-radius:2px;background:var(--k);flex:none}
+.slot em{font-style:normal;font-size:.85rem;color:var(--soft)}
+.slot.done{opacity:.5}
+.slot.live em,.slot.next em{color:var(--ink);font-weight:700;padding:3px 10px;border-radius:99px}
+.slot.live em{background:var(--green)}.slot.next em{background:var(--peak)}
+.board .note{margin-top:10px;font-size:.82rem;color:var(--soft)}
+@media (max-width:420px){.slot{grid-template-columns:92px 1fr}.slot em{grid-column:2}}
+
+/* Facts strip */
+.facts{background:var(--paper);border-bottom:1px solid var(--line)}
+.facts ul{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding-block:26px}
+.facts li{border-left:3px solid var(--ink);padding-left:14px;font-size:.95rem;color:var(--steel)}
+.facts b{display:block;font:800 1.35rem/1.1 var(--disp);color:var(--ink);letter-spacing:.01em}
+@media (max-width:860px){.facts ul{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:480px){.facts ul{grid-template-columns:1fr;gap:14px}}
+
+/* Sections */
+.sec{padding:88px 0}
+.paper{background:var(--paper)}
+h2.title{font:800 clamp(2.5rem,5.4vw,4rem)/.95 var(--disp);margin-bottom:14px}
+.sub{color:var(--steel);max-width:58ch;margin-bottom:34px}
+.fine{font-size:.88rem;color:var(--steel);margin-top:20px;max-width:70ch}
+@media (max-width:700px){.sec{padding:64px 0}}
+
+/* Plans */
+.seg{display:inline-flex;border:2px solid var(--ink);border-radius:4px;overflow:hidden;margin-bottom:32px;background:var(--paper)}
+.seg button{font:700 .98rem/1.2 var(--body);padding:10px 20px;border:0;background:transparent;color:var(--ink);cursor:pointer;text-align:left}
+.seg button+button{border-left:2px solid var(--ink)}
+.seg button[aria-pressed=true]{background:var(--ink);color:#fff}
+.seg small{display:block;font-weight:500;font-size:.78rem}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);border:2px solid var(--ink);background:var(--paper)}
+.plan{display:flex;flex-direction:column;padding:30px 28px 28px}
+.plan+.plan{border-left:2px solid var(--ink)}
+.plan.pick{background:var(--ink);color:#fff}
+.plan h3{font:800 2.1rem/1 var(--disp)}
+.tag{min-height:28px;margin-bottom:8px}
+.tag span{display:inline-block;background:var(--peak);color:var(--ink);font-weight:700;font-size:.82rem;padding:4px 10px;border-radius:99px}
+.price{display:flex;align-items:baseline;gap:8px;margin:20px 0 4px}
+.amt{font:900 3.8rem/1 var(--disp);font-variant-numeric:tabular-nums}
+.price small{font-size:.95rem;color:var(--steel)}
+.bill{color:var(--steel);font-size:.92rem}
+.save{font-weight:700;font-size:.92rem;color:#0b7a4b;min-height:1.5em;margin:2px 0 18px}
+.pick .price small,.pick .bill{color:var(--soft)}.pick .save{color:#3ddc97}
+.plan ul{margin-bottom:26px}
+.plan li{position:relative;padding:11px 0 11px 28px;border-top:1px solid var(--line)}
+.plan li::before{content:"";position:absolute;left:3px;top:15px;width:11px;height:6px;border-left:3px solid var(--peak-text);border-bottom:3px solid var(--peak-text);transform:rotate(-45deg)}
+.pick li{border-color:var(--dim)}.pick li::before{border-color:var(--peak)}
+.plan .btn{margin-top:auto}
+.pick .btn{border-color:var(--peak)}.pick .btn:hover{background:#fff;border-color:#fff}
+@media (max-width:900px){.plans{grid-template-columns:1fr}.plan+.plan{border-left:0;border-top:2px solid var(--ink)}}
+
+/* Timetable */
+.legend{display:flex;flex-wrap:wrap;gap:8px 22px;margin-bottom:26px;font-size:.92rem}
+.legend li{display:flex;align-items:center;gap:8px}
+.legend li::before{content:"";width:12px;height:12px;border-radius:2px;background:var(--k)}
+.week{border-bottom:2px solid var(--ink)}
+.day{display:grid;grid-template-columns:150px 1fr;gap:16px;align-items:center;padding:16px 14px;border-top:2px solid var(--ink)}
+.day h3{font:800 1.75rem/1 var(--disp)}
+.day h3 span{display:inline-block;margin-left:10px;padding:5px 9px;border-radius:99px;background:var(--peak);font:700 .78rem/1 var(--body);vertical-align:middle}
+.day.is-today{background:#fff1ea}
+.sl{display:flex;flex-wrap:wrap;gap:10px}
+.cls{position:relative;display:flex;align-items:center;gap:12px;min-height:54px;padding:8px 18px 8px 22px;border:2px solid var(--line);border-left:0;border-radius:0 4px 4px 0;background:var(--paper);color:inherit;font:inherit;text-align:left;cursor:pointer;transition:border-color .15s}
+.cls::before{content:"";position:absolute;left:0;top:-2px;bottom:-2px;width:8px;background:var(--k)}
+.cls:hover{border-color:var(--ink)}
+.cls time{font:800 1.3rem/1 var(--disp);letter-spacing:.01em}
+@media (max-width:700px){.day{grid-template-columns:1fr;gap:10px}}
+
+/* Shop */
+.tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.cats{display:flex;gap:10px;flex-wrap:wrap}
+.chip{font:700 .95rem/1 var(--body);padding:11px 18px;border:2px solid var(--ink);border-radius:99px;background:transparent;color:var(--ink);cursor:pointer}
+.chip[aria-pressed=true]{background:var(--ink);color:#fff}
+.search{margin-left:auto;width:min(260px,100%)}
+.count{font-size:.9rem;color:var(--steel);margin-bottom:18px}
+.shop{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px}
+.prod{display:flex;flex-direction:column;gap:10px;background:var(--paper);border:2px solid var(--line);border-radius:6px;padding:14px;transition:border-color .15s}
+.prod:hover{border-color:var(--ink)}
+.art{background:var(--tint);border-radius:4px;transition:transform .15s ease-out}
+.art svg{display:block;width:100%;height:170px}
+.prod h3{font:800 1.45rem/1.05 var(--disp);margin-top:6px}
+.prod p{color:var(--steel);font-size:.92rem}
+.prod select{padding:10px 12px}
+.pr{font:800 1.9rem/1 var(--disp);margin-top:auto;padding-top:4px}
+.prod .btn{min-height:46px}
+
+/* Visit */
+.visit{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.addr{font-size:1.15rem;margin:6px 0 24px;max-width:30ch}
+.hours{border-top:2px solid var(--ink)}
+.hours li{display:flex;justify-content:space-between;gap:16px;padding:13px 14px;border-bottom:1px solid var(--line)}
+.hours li.is-today{background:#fff1ea;font-weight:700}
+@media (max-width:860px){.visit{grid-template-columns:1fr;gap:36px}}
+
+/* FAQ */
+.faq{max-width:760px;border-top:2px solid var(--ink)}
+.faq details{border-bottom:1px solid var(--ink)}
+.faq summary{display:flex;justify-content:space-between;gap:20px;padding:20px 0;font:700 1.12rem/1.3 var(--body);cursor:pointer;list-style:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font:800 1.6rem/1 var(--disp)}
+.faq details[open] summary::after{content:"\2212"}
+.faq p{padding:0 40px 22px 0;color:var(--steel)}
+
+/* Trial form */
+.trial{background:var(--peak)}
+.trial .wrap{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:56px;align-items:start}
+.trial .sub{color:var(--ink);font-weight:500}
+.steps{counter-reset:s;display:grid;gap:14px;margin-top:8px;max-width:38ch}
+.steps li{counter-increment:s;display:grid;grid-template-columns:44px 1fr;align-items:baseline}
+.steps li::before{content:counter(s);font:900 2.2rem/1 var(--disp)}
+.panel{background:var(--paper);border:2px solid var(--ink);border-radius:6px;padding:28px}
+form{display:grid;gap:16px}
+label{display:grid;gap:6px;font-weight:600;font-size:.95rem}
+input,select,textarea{width:100%;font:inherit;padding:12px 14px;border:2px solid var(--field);border-radius:4px;background:#fff;color:var(--ink)}
+input:focus,select:focus,textarea:focus{border-color:var(--ink)}
+[aria-invalid=true]{border-color:#b42318}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:900px){.trial .wrap{grid-template-columns:1fr;gap:36px}.row2{grid-template-columns:1fr}}
+
+footer{background:var(--ink);color:var(--soft);padding:30px 0;font-size:.9rem}
+
+/* Cart drawer */
+.scrim{position:fixed;inset:0;background:rgba(18,20,43,.6);z-index:15}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(440px,100%);background:var(--paper);z-index:20;border-left:2px solid var(--ink);display:flex;flex-direction:column;transform:translateX(100%);visibility:hidden;transition:transform .25s,visibility .25s}
+.drawer.open{transform:none;visibility:visible}
+@media (prefers-reduced-motion:reduce){.drawer{transition:none}}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:2px solid var(--ink)}
+.dh h2{font:800 1.9rem/1 var(--disp)}
+.dh button{font:700 1rem var(--body);border:2px solid var(--ink);border-radius:4px;background:transparent;padding:8px 14px;cursor:pointer;color:var(--ink)}
+.dh button:hover{background:var(--ink);color:#fff}
+.db{flex:1;overflow-y:auto;padding:6px 20px 24px}
+.li{display:grid;grid-template-columns:1fr auto;gap:4px 12px;padding:14px 0;border-bottom:1px solid var(--line)}
+.li small{color:var(--steel)}
+.qty{display:flex;align-items:center;gap:10px;grid-column:1/3;margin-top:4px}
+.qty button{width:34px;height:34px;border:2px solid var(--ink);border-radius:4px;background:transparent;color:var(--ink);font:800 1.1rem system-ui;cursor:pointer}
+.qty .rm{width:auto;padding:0 12px;border-color:var(--line);font:600 .85rem var(--body);margin-left:auto;color:var(--steel)}
+.empty{margin-top:24px;color:var(--steel)}
+.meter{height:8px;background:var(--chalk);border:1px solid var(--line);border-radius:99px;overflow:hidden}
+.meter i{display:block;height:100%;width:var(--w);background:var(--peak);transition:width .3s}
+.msg{min-height:1.3em;font-size:.9rem;color:var(--steel);margin:6px 0}
+.msg.err{color:#b42318}
+.freeship{margin-top:14px}
+.cp{display:flex;gap:8px;margin-top:14px}
+.cp input{flex:1;min-width:0}
+.cp button{font:700 1rem var(--body);border:2px solid var(--ink);background:transparent;border-radius:4px;padding:0 16px;cursor:pointer;color:var(--ink)}
+.cp button:hover{background:var(--ink);color:#fff}
+.sum{padding:10px 0}
+.sum div{display:flex;justify-content:space-between;padding:3px 0}
+.sum .tot{font:800 1.5rem/1.2 var(--disp);border-top:2px solid var(--ink);margin-top:8px;padding-top:10px}
+.co{gap:10px;margin-top:8px}
+.co textarea{resize:vertical}
+.co .link{justify-self:start}
+
+/* Preview dialog (demo mode) */
+dialog{width:min(540px,calc(100% - 32px));border:2px solid var(--ink);border-radius:6px;padding:26px;color:var(--ink)}
+dialog::backdrop{background:rgba(18,20,43,.6)}
+dialog h2{font:800 2rem/1 var(--disp);margin-bottom:10px}
+dialog pre{white-space:pre-wrap;word-break:break-word;font:400 .92rem/1.5 var(--body);background:var(--chalk);border-radius:4px;padding:14px;margin:16px 0 20px;max-height:42vh;overflow:auto}
+
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:11px 20px;border-radius:99px;z-index:60;font-weight:600;max-width:calc(100% - 32px);text-align:center}
+
+/* One orchestrated moment: the hero and the board arrive together. Everything else answers a tap. */
+@media (prefers-reduced-motion:no-preference){
+  h1 span{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}
+  h1 span:nth-child(2){animation-delay:.08s}h1 span:nth-child(3){animation-delay:.16s}
+  .board.intro .slot{animation:rise .5s cubic-bezier(.2,.7,.2,1) both;animation-delay:calc(.35s + var(--i)*70ms)}
+  .toast{animation:rise .25s ease-out both}
+  @keyframes rise{from{opacity:0;transform:translateY(22px)}}
+}
+</style>
+</head>
+<body id="top">
+<a class="skip" href="#main">Skip to content</a>
+<noscript><p style="margin:0;padding:14px 24px;background:#fff1ea">This site needs JavaScript for the live board, timetable and shop.</p></noscript>
+
+<header class="nav"><div class="wrap">
+  <a class="brand" href="#top" aria-label="Peakline Fitness, back to top">
+    <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="6" fill="#ff5a1f"/><path d="M4 26 13 10l4.5 7L21 12l7 14z" fill="#12142b"/></svg>
+    Peakline Fitness
+  </a>
+  <nav class="menu" id="menu" aria-label="Sections">
+    <a href="#plans">Plans</a><a href="#classes">Classes</a><a href="#shop">Shop</a><a href="#visit">Visit us</a><a href="#enquire">Free trial</a>
+  </nav>
+  <button class="cartbtn" id="cartBtn" type="button" aria-haspopup="dialog">Cart <b id="cartCount">0</b></button>
+  <button class="menubtn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+</div></header>
+
+<main id="main">
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <h1><span>Show up.</span> <span>The rest</span> <span>gets easier.</span></h1>
+      <p class="lead">A neighbourhood gym with coached classes, a full strength floor and plans you can start this week. Come in for a free trial session.</p>
+      <div class="btns"><a class="btn ink" href="#enquire">Book a free trial</a><a class="btn line" href="#plans">See membership plans</a></div>
+    </div>
+    <aside class="board intro" id="board" aria-label="Today at Peakline">
+      <div class="bh"><h2 id="todayName">Today</h2><span class="state" id="gymState"></span></div>
+      <p class="next" id="nextUp"></p>
+      <div class="strip" id="strip" aria-hidden="true"></div>
+      <div class="strip-l" id="stripL" aria-hidden="true"></div>
+      <ul id="todayList"></ul>
+      <p class="note">Sample timetable and hours for this concept.</p>
+    </aside>
+  </div>
+</section>
+
+<div class="facts"><div class="wrap"><ul>
+  <li><b>Free trial</b>Try a session before you pay</li>
+  <li><b>Coached classes</b>Small groups, every level</li>
+  <li><b>Strength floor</b>Racks, free weights and machines</li>
+  <li><b>Shop delivery</b>Free above ₹1,500</li>
+</ul></div></div>
+
+<section class="sec" id="plans"><div class="wrap">
+  <h2 class="title">Membership plans</h2>
+  <p class="sub">Pick how long you want to commit. Longer plans cost less per month.</p>
+  <div class="seg" role="group" aria-label="Billing period">
+    <button type="button" data-m="1" aria-pressed="true">Monthly<small>No commitment</small></button>
+    <button type="button" data-m="3" aria-pressed="false">3 months<small>Save 10%</small></button>
+    <button type="button" data-m="12" aria-pressed="false">12 months<small>Save 25%</small></button>
+  </div>
+  <div class="plans" id="planGrid"></div>
+  <p class="fine">Sample pricing for this concept project. Replace with the gym's real rates.</p>
+</div></section>
+
+<section class="sec paper" id="classes"><div class="wrap">
+  <h2 class="title">Weekly class timetable</h2>
+  <p class="sub">Strength, conditioning and mobility, all led by a coach. Tap a class to add it to your free-trial request.</p>
+  <ul class="legend" id="legend" aria-label="Class types"></ul>
+  <div class="week" id="week"></div>
+</div></section>
+
+<section class="sec" id="shop"><div class="wrap">
+  <h2 class="title">Protein and gym shop</h2>
+  <p class="sub">Add what you need, set the flavour, and send the order on WhatsApp. Members and walk-ins can both order.</p>
+  <div class="tools">
+    <div class="cats" id="cats" role="group" aria-label="Product category"></div>
+    <input class="search" id="search" type="search" placeholder="Search products" aria-label="Search products">
+  </div>
+  <p class="count" id="shopCount" aria-live="polite"></p>
+  <div class="shop" id="shopGrid"></div>
+  <p class="fine" id="shopNone" hidden>No products match your search. <button class="link" type="button" id="clearSearch">Clear search</button></p>
+  <p class="fine">Sample products and prices for this concept project. A real store needs accurate nutrition labels and the licences that food regulations require.</p>
+</div></section>
+
+<section class="sec paper" id="visit"><div class="wrap visit">
+  <div>
+    <h2 class="title">Visit us</h2>
+    <p class="addr" id="addr"></p>
+    <div class="btns">
+      <button class="btn" type="button" id="askWA">Message us on WhatsApp</button>
+      <a class="btn line" id="dir" href="#" target="_blank" rel="noopener" hidden>Get directions</a>
+    </div>
+    <p class="fine">Sample address and hours for this concept project.</p>
+  </div>
+  <ul class="hours" id="hours" aria-label="Opening hours"></ul>
+</div></section>
+
+<section class="sec" id="faq"><div class="wrap">
+  <h2 class="title">Before you come in</h2>
+  <p class="sub">Quick answers. Anything else, message us on WhatsApp.</p>
+  <div class="faq">
+    <details><summary>What happens in the free trial?</summary><p>A coach shows you around and you join one session. Pick a class from the timetable or just come in and we will place you.</p></details>
+    <details><summary>Can I move to a longer plan later?</summary><p>Yes. Start monthly, then switch to a 3-month or 12-month plan whenever you are ready.</p></details>
+    <details><summary>How do shop orders and payment work?</summary><p>Your order arrives on WhatsApp. We confirm stock and the total there, then arrange payment and delivery with you.</p></details>
+    <details><summary>What should I bring?</summary><p>Water, comfortable shoes and a towel. If you forget, the shop sells towels and shakers.</p></details>
+  </div>
+  <p class="fine">Sample answers for this concept project.</p>
+</div></section>
+
+<section class="sec trial" id="enquire"><div class="wrap">
+  <div>
+    <h2 class="title">Book your free trial</h2>
+    <p class="sub">Send your details and we will reply on WhatsApp to confirm a time.</p>
+    <ol class="steps">
+      <li>Fill in the form and send it on WhatsApp.</li>
+      <li>We reply to confirm your day and time.</li>
+      <li>Come in and train with a coach.</li>
+    </ol>
+  </div>
+  <div class="panel">
+    <form id="enq">
+      <label>Your name<input name="name" required autocomplete="name"></label>
+      <label>What do you want to work on?
+        <select name="goal"><option>Build strength</option><option>Lose weight</option><option>General fitness</option><option>Group or corporate enquiry</option></select></label>
+      <div class="row2">
+        <label>Plan you are considering
+          <select name="plan"><option>Not sure yet</option><option>Basic</option><option>Standard</option><option>Premium</option></select></label>
+        <label>Preferred time
+          <select name="when"><option>Any time</option><option>Morning, 6 to 10 am</option><option>Evening, 5 to 10 pm</option></select></label>
+      </div>
+      <label>Message (optional)<textarea name="msg" rows="3"></textarea></label>
+      <button class="btn" type="submit">Send on WhatsApp</button>
+    </form>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">Concept project for a portfolio. The business name, prices, hours, class times, products and orders are sample content, not a real gym.</div></footer>
+
+<div class="scrim" id="scrim" hidden></div>
+<aside class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+  <div class="dh"><h2 id="cartTitle">Your cart</h2><button type="button" id="closeCart">Close</button></div>
+  <div class="db">
+    <div id="cartItems"></div>
+    <div id="cartRest">
+      <div class="freeship" id="freeship"></div>
+      <div class="cp"><input id="coupon" placeholder="Coupon code" aria-label="Coupon code" autocomplete="off"><button type="button" id="applyCoupon">Apply</button></div>
+      <p class="msg" id="cpMsg" aria-live="polite">Try FIRST10 for 10% off (sample code).</p>
+      <div class="sum" id="sum"></div>
+      <form class="co" id="co" novalidate>
+        <input name="name" placeholder="Your name" autocomplete="name" aria-label="Your name">
+        <input name="phone" placeholder="Mobile number (10 digits)" inputmode="numeric" autocomplete="tel" aria-label="Mobile number">
+        <textarea name="addr" rows="2" placeholder="Delivery address" autocomplete="street-address" aria-label="Delivery address"></textarea>
+        <p class="msg err" id="coMsg" aria-live="polite"></p>
+        <button class="btn" type="submit">Order on WhatsApp</button>
+        <button class="link" type="button" id="clearCart">Clear cart</button>
+      </form>
+    </div>
+  </div>
+</aside>
+
+<dialog id="wa" aria-labelledby="waTitle">
+  <h2 id="waTitle">Demo: WhatsApp message preview</h2>
+  <p>This is the message the gym would receive. On the live site, this button opens WhatsApp with the text ready to send.</p>
+  <pre id="waText"></pre>
+  <div class="btns"><button class="btn" type="button" id="waCopy">Copy message</button><button class="btn line" type="button" id="waClose">Close</button></div>
+</dialog>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script>
+/* ============ EDIT THESE ============
+   whatsapp: the gym's number, country code first, digits only (example: 919876543210).
+   While it still holds the placeholder, the site runs in demo mode and shows a message preview
+   instead of opening WhatsApp, so nothing breaks when a client tries the buttons. */
+const GYM = {
+  whatsapp: "91XXXXXXXXXX",
+  address: "Peak Plaza, first floor, Sample Road, Your City",
+  mapsUrl: ""   // optional: paste a Google Maps link to show a Get directions button
+};
+const BRAND = "Peakline Fitness";
+const LIVE = /^\d{11,15}$/.test(GYM.whatsapp);
+
+/* ============ Helpers ============ */
+const $ = id => document.getElementById(id);
+const calm = matchMedia("(prefers-reduced-motion:reduce)").matches;
+const inr = n => "₹" + Math.round(n).toLocaleString("en-IN");
+const clock = m => { const h = Math.floor(m / 60), mm = m % 60; return (h % 12 || 12) + ":" + String(mm).padStart(2, "0") + " " + (h >= 12 ? "pm" : "am"); };
+const hr = m => clock(m).replace(":00", "");
+const span = min => min < 60 ? min + " min" : Math.floor(min / 60) + " h" + (min % 60 ? " " + (min % 60) + " min" : "");
+let toastTimer;
+function toast(m){ const t = $("toast"); t.textContent = m; t.hidden = false; clearTimeout(toastTimer); toastTimer = setTimeout(() => t.hidden = true, 1800); }
+
+/* ============ Timetable data ============ */
+const DAYS = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+const KINDS = {
+  strength:["Strength","#d62839"], hiit:["HIIT","#f2b200"], conditioning:["Conditioning","#2c5bff"],
+  mobility:["Mobility","#13a869"], core:["Core and balance","#6a3df0"], open:["Open floor","#8b90ad"]
+};
+const S = (t, n, k, dur = 60) => { const [h, m] = t.split(":").map(Number); return { m: h * 60 + m, n, k, dur }; };
+const A = [S("6:00","Strength basics","strength"), S("7:30","HIIT","hiit"), S("18:00","Mobility","mobility"), S("19:30","Strength","strength")];
+const B = [S("6:00","Conditioning","conditioning"), S("7:30","Core and balance","core"), S("18:00","HIIT","hiit"), S("19:30","Strength","strength")];
+const SAT = [S("7:00","Strength","strength"), S("8:30","HIIT","hiit"), S("10:00","Mobility","mobility")];
+const SUN = [S("8:00","Open floor with a coach","open",240)];
+const WEEK = [SUN, A, B, A, B, A, SAT];                       // index = day of week, Sunday first
+const HOURS = [[480,720],[360,1320],[360,1320],[360,1320],[360,1320],[360,1320],[360,1320]];   // open, close in minutes
+const ORDER = [1,2,3,4,5,6,0];
+const today = new Date().getDay();
+
+/* ============ Live board ============ */
+function nextSlot(now){
+  const d = now.getDay(), mins = now.getHours() * 60 + now.getMinutes();
+  for (let o = 0; o < 8; o++){
+    const day = (d + o) % 7, s = WEEK[day].find(x => o > 0 || x.m > mins);
+    if (s) return { s, o, day };
+  }
+}
+function drawBoard(){
+  const now = new Date(), d = now.getDay(), mins = now.getHours() * 60 + now.getMinutes();
+  const [open, close] = HOURS[d], slots = WEEK[d], total = close - open;
+  const pct = m => Math.max(0, Math.min(100, (m - open) / total * 100));
+  $("todayName").textContent = DAYS[d];
+
+  const st = $("gymState");
+  if (mins >= open && mins < close){ st.className = "state open"; st.textContent = "Open now, until " + hr(close); }
+  else { st.className = "state"; st.textContent = "Closed now, opens " + (mins < open ? "today at " + hr(open) : "tomorrow at " + hr(HOURS[(d + 1) % 7][0])); }
+
+  const live = slots.find(s => mins >= s.m && mins < s.m + s.dur);
+  let msg;
+  if (live) msg = "Live now: " + live.n + ", until " + clock(live.m + live.dur);
+  else {
+    const nx = nextSlot(now);
+    msg = nx.o === 0 ? "Next class: " + nx.s.n + " at " + clock(nx.s.m) + ", in " + span(nx.s.m - mins)
+        : "Next class: " + nx.s.n + ", " + (nx.o === 1 ? "tomorrow" : DAYS[nx.day]) + " at " + clock(nx.s.m);
+  }
+  $("nextUp").textContent = msg;
+
+  $("strip").innerHTML = slots.map(s => `<i style="left:${pct(s.m)}%;width:${pct(s.m + s.dur) - pct(s.m)}%;--k:${KINDS[s.k][1]}"></i>`).join("")
+    + (mins >= open && mins <= close ? `<b style="left:${pct(mins)}%"></b>` : "");
+  $("stripL").innerHTML = `<span>${hr(open)}</span><span>${hr(close)}</span>`;
+
+  const nextToday = slots.find(s => s.m > mins);
+  $("todayList").innerHTML = slots.map((s, i) => {
+    const state = mins >= s.m + s.dur ? "done" : mins >= s.m ? "live" : s === nextToday ? "next" : "later";
+    const note = state === "done" ? "Done" : state === "live" ? "Live now" : state === "next" ? "In " + span(s.m - mins) : "";
+    return `<li class="slot ${state}" style="--i:${i};--k:${KINDS[s.k][1]}"><time>${clock(s.m)}</time><span class="nm">${s.n}</span><em>${note}</em></li>`;
+  }).join("");
+}
+drawBoard();
+setInterval(drawBoard, 30000);
+setTimeout(() => $("board").classList.remove("intro"), 1800);
+
+/* ============ Timetable, hours, legend ============ */
+$("legend").innerHTML = Object.values(KINDS).map(([n, c]) => `<li style="--k:${c}">${n}</li>`).join("");
+$("week").innerHTML = ORDER.map(d => `<div class="day${d === today ? " is-today" : ""}"><h3>${DAYS[d]}${d === today ? "<span>Today</span>" : ""}</h3><div class="sl">${
+  WEEK[d].map((s, i) => `<button type="button" class="cls" style="--k:${KINDS[s.k][1]}" data-d="${d}" data-i="${i}"><time>${clock(s.m)}</time><span>${s.n}</span></button>`).join("")}</div></div>`).join("");
+$("hours").innerHTML = ORDER.map(d => `<li class="${d === today ? "is-today" : ""}"><span>${DAYS[d]}</span><span>${hr(HOURS[d][0])} to ${hr(HOURS[d][1])}</span></li>`).join("");
+$("addr").textContent = GYM.address;
+if (GYM.mapsUrl){ $("dir").href = GYM.mapsUrl; $("dir").hidden = false; }
+
+/* ============ WhatsApp (live) or message preview (demo) ============ */
+function sendWA(text){
+  if (LIVE){ window.open("https://wa.me/" + GYM.whatsapp + "?text=" + encodeURIComponent(text), "_blank", "noopener"); return; }
+  $("waText").textContent = text;
+  const d = $("wa");
+  if (typeof d.showModal === "function") d.showModal(); else d.setAttribute("open", "");
+}
+$("waClose").addEventListener("click", () => { const d = $("wa"); if (d.close) d.close(); else d.removeAttribute("open"); });
+$("waCopy").addEventListener("click", async () => {
+  const b = $("waCopy");
+  try { await navigator.clipboard.writeText($("waText").textContent); b.textContent = "Copied"; }
+  catch (e) { const r = document.createRange(); r.selectNodeContents($("waText")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = "Selected, now copy"; }
+  setTimeout(() => b.textContent = "Copy message", 1600);
+});
+$("askWA").addEventListener("click", () => sendWA("Hi, I have a question about " + BRAND + "."));
+
+/* ============ Plans ============ */
+const PLANS = [
+  { n:"Basic", p:1200, f:["Strength floor access","Open 6 am to 10 pm","Locker room"] },
+  { n:"Standard", p:1800, f:["Everything in Basic","Group classes, 3 a week","Starter programme from a coach"], pick:true },
+  { n:"Premium", p:2600, f:["Everything in Standard","Unlimited classes","2 coaching sessions a month"] }
+];
+const OFF = { 1:1, 3:.9, 12:.75 };
+let period = 1, lastPrices = PLANS.map(x => x.p);
+function drawPlans(m){
+  $("planGrid").innerHTML = PLANS.map(x => {
+    const per = Math.round(x.p * OFF[m] / 10) * 10, saved = (x.p - per) * m;
+    return `<article class="plan${x.pick ? " pick" : ""}"><div class="tag">${x.pick ? "<span>Recommended</span>" : ""}</div><h3>${x.n}</h3>
+    <div class="price"><span class="amt">${inr(per)}</span><small>per month</small></div>
+    <p class="bill">${m > 1 ? "Billed " + inr(per * m) + " every " + m + " months" : "Billed monthly"}</p>
+    <p class="save">${saved ? "You save " + inr(saved) + " over " + m + " months" : ""}</p>
+    <ul>${x.f.map(f => `<li>${f}</li>`).join("")}</ul>
+    <button class="btn" type="button" data-plan="${x.n}">Choose ${x.n}</button></article>`;
+  }).join("");
+}
+function pricePop(){
+  const els = [...document.querySelectorAll("#planGrid .amt")];
+  const to = els.map(e => parseInt(e.textContent.replace(/\D/g, ""), 10)), from = lastPrices;
+  lastPrices = to;
+  if (calm) return;
+  const t0 = performance.now();
+  (function step(t){
+    const k = Math.min((t - t0) / 450, 1), e = 1 - Math.pow(1 - k, 3);
+    els.forEach((el, i) => el.textContent = inr(from[i] + (to[i] - from[i]) * e));
+    if (k < 1) requestAnimationFrame(step);
+  })(t0);
+}
+document.querySelectorAll(".seg button").forEach(b => b.addEventListener("click", () => {
+  document.querySelectorAll(".seg button").forEach(x => x.setAttribute("aria-pressed", x === b));
+  period = +b.dataset.m; drawPlans(period); pricePop();
+}));
+drawPlans(1);
+
+function goForm(){
+  $("enquire").scrollIntoView({ behavior: calm ? "auto" : "smooth" });
+  setTimeout(() => $("enq").elements.name.focus({ preventScroll: true }), calm ? 0 : 450);
+}
+$("planGrid").addEventListener("click", e => {
+  const b = e.target.closest("button[data-plan]"); if (!b) return;
+  $("enq").elements.plan.value = b.dataset.plan; goForm(); toast(b.dataset.plan + " plan selected");
+});
+$("week").addEventListener("click", e => {
+  const b = e.target.closest(".cls"); if (!b) return;
+  const s = WEEK[b.dataset.d][b.dataset.i];
+  $("enq").elements.msg.value = "I would like to try the " + DAYS[b.dataset.d] + " " + clock(s.m) + " " + s.n + " class.";
+  goForm(); toast("Class added to your trial request");
+});
+$("enq").addEventListener("submit", e => {
+  e.preventDefault();
+  const f = new FormData(e.target), plan = f.get("plan"), msg = f.get("msg").trim();
+  const planTxt = plan === "Not sure yet" ? plan : plan + " (" + (period === 1 ? "monthly billing" : period + "-month billing") + ")";
+  sendWA(["Hi, I would like to book a free trial at " + BRAND + ".", "Name: " + f.get("name").trim(), "Goal: " + f.get("goal"), "Plan: " + planTxt, "Preferred time: " + f.get("when"), msg ? "Message: " + msg : null].filter(Boolean).join("\n"));
+});
+
+/* ============ Shop ============ */
+const shade = (h, p) => { const n = parseInt(h.slice(1), 16), f = p < 0 ? 0 : 255, t = Math.abs(p), m = v => Math.round((f - v) * t + v); return "#" + (0x1000000 + m(n >> 16) * 65536 + m(n >> 8 & 255) * 256 + m(n & 255)).toString(16).slice(1); };
+const svg = b => `<svg viewBox="0 0 160 160" role="img" aria-label="Product illustration">${b}</svg>`;
+const defs = (i, c) => `<defs><linearGradient id="b${i}" x1="0" x2="1"><stop offset="0" stop-color="${shade(c,-.28)}"/><stop offset=".3" stop-color="${shade(c,.3)}"/><stop offset=".65" stop-color="${c}"/><stop offset="1" stop-color="${shade(c,-.4)}"/></linearGradient><linearGradient id="l${i}" x1="0" x2="1"><stop offset="0" stop-color="#23264a"/><stop offset=".4" stop-color="#666b9c"/><stop offset="1" stop-color="#12142b"/></linearGradient><radialGradient id="s${i}"><stop offset="0" stop-color="#12142b" stop-opacity=".4"/><stop offset="1" stop-color="#12142b" stop-opacity="0"/></radialGradient></defs>`;
+const W = (x, c, body) => svg(defs(x.id, c) + `<ellipse cx="80" cy="148" rx="50" ry="8" fill="url(#s${x.id})"/>` + body);
+const T = (x, y, t, sz, f) => `<text x="80" y="${y}" text-anchor="middle" font-family="Big Shoulders Display,Bahnschrift,Arial Narrow,sans-serif" font-weight="800" font-size="${sz}" fill="${f}">${t}</text>`;
+const nm = x => x.n.split(",")[0].split(" ")[0].toUpperCase(), sb = x => (x.n.split(", ")[1] || "").toUpperCase();
+const ART = {
+  tub:(c,x)=>W(x,c,`<rect x="40" y="20" width="80" height="22" rx="6" fill="url(#l${x.id})"/><path d="M48 27h64M48 34h64" stroke="#fff" opacity=".16"/><rect x="34" y="40" width="92" height="102" rx="13" fill="url(#b${x.id})"/><rect x="46" y="62" width="68" height="56" rx="6" fill="#fff" opacity=".96"/><rect x="46" y="62" width="68" height="12" rx="6" fill="${c}"/>${T(x,96,nm(x),nm(x).length>6?15:19,"#12142b")}${T(x,110,sb(x),9,"#555a73")}<rect x="40" y="46" width="9" height="90" rx="4" fill="#fff" opacity=".3"/>`),
+  box:(c,x)=>W(x,c,`<g transform="rotate(-8 80 96)"><rect x="20" y="56" width="120" height="70" rx="8" fill="url(#b${x.id})"/><rect x="20" y="56" width="120" height="16" rx="8" fill="#12142b" opacity=".85"/><path d="M52 72l-14 54M86 72l-14 54M120 72l-14 54" stroke="#fff" stroke-width="9" opacity=".8"/><rect x="46" y="88" width="68" height="24" rx="4" fill="#fff"/>${T(x,105,"BARS",16,"#12142b")}</g>`),
+  shaker:(c,x)=>W(x,c,`<rect x="62" y="12" width="36" height="14" rx="5" fill="url(#l${x.id})"/><rect x="56" y="24" width="48" height="11" rx="4" fill="#12142b"/><path d="M52 37h56l-6 101q0 7-7 7H65q-7 0-7-7z" fill="url(#b${x.id})" opacity=".94"/><path d="M58 60h44M57 78h46M56 96h48M55 114h50" stroke="#fff" stroke-width="3" opacity=".55"/><rect x="58" y="40" width="7" height="96" rx="3" fill="#fff" opacity=".3"/>`),
+  towel:(c,x)=>W(x,c,`<rect x="24" y="54" width="112" height="78" rx="9" fill="url(#b${x.id})"/><rect x="24" y="76" width="112" height="10" fill="#fff" opacity=".78"/><rect x="24" y="96" width="112" height="5" fill="#fff" opacity=".45"/><path d="M24 62q56 14 112 0" stroke="#fff" opacity=".35" fill="none" stroke-width="3"/>${T(x,120,"PEAKLINE",11,"#fff")}`)
+};
+const P = [
+  { id:"w1", n:"Whey protein, 1 kg", c:"Protein", p:2199, fl:["Chocolate","Vanilla","Coffee"], col:"#ff5a1f", a:"tub", d:"Mixes smooth in water or milk." },
+  { id:"w2", n:"Whey protein, 2 kg", c:"Protein", p:3999, fl:["Chocolate","Vanilla","Coffee"], col:"#6a3df0", a:"tub", d:"The larger tub for regular training." },
+  { id:"v1", n:"Plant protein, 1 kg", c:"Protein", p:2499, fl:["Chocolate","Cookies"], col:"#13a869", a:"tub", d:"Dairy-free option." },
+  { id:"b1", n:"Protein bars, box of 6", c:"Bars", p:749, fl:["Choco almond","Peanut butter"], col:"#e63e62", a:"box", d:"Grab-and-go, fits a gym bag." },
+  { id:"c1", n:"Creatine, 250 g", c:"Add-ons", p:1299, fl:["Unflavoured"], col:"#2c6bff", a:"tub", d:"Plain powder, no flavour." },
+  { id:"s1", n:"Shaker, 700 ml", c:"Add-ons", p:349, fl:null, col:"#19c3e6", a:"shaker", d:"Leak-proof lid." },
+  { id:"t1", n:"Gym towel", c:"Add-ons", p:299, fl:null, col:"#f2b200", a:"towel", d:"Quick-dry microfibre." }
+];
+const CATS = ["All","Protein","Bars","Add-ons"], FREE_OVER = 1500, SHIP = 60, CODES = { FIRST10: .1 };
+let cat = "All", qs = "", coupon = "", cart = [];
+try {
+  cart = JSON.parse(localStorage.getItem("peaklineCart") || "[]").filter(i => {
+    const x = P.find(p => p.id === i.id);
+    return x && Number.isInteger(i.q) && i.q > 0 && (x.fl ? x.fl.includes(i.fl) : !i.fl);
+  }).map(i => ({ k: i.id + "|" + i.fl, id: i.id, fl: i.fl, q: Math.min(i.q, 20) }));
+} catch (e) { cart = []; }
+const persist = () => { try { localStorage.setItem("peaklineCart", JSON.stringify(cart)); } catch (e) {} };
+const prod = i => P.find(x => x.id === i.id);
+
+function drawCats(){
+  $("cats").innerHTML = CATS.map(c => `<button class="chip" type="button" data-c="${c}" aria-pressed="${c === cat}">${c}</button>`).join("");
+}
+function bindTilt(){
+  if (calm) return;
+  document.querySelectorAll(".prod").forEach(c => {
+    const a = c.querySelector(".art");
+    c.addEventListener("pointermove", e => {
+      if (e.pointerType === "touch") return;
+      const r = a.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+      a.style.transform = `perspective(600px) rotateY(${x * 10}deg) rotateX(${-y * 10}deg)`;
+    });
+    c.addEventListener("pointerleave", () => a.style.transform = "");
+  });
+}
+function drawShop(){
+  const q = qs.trim().toLowerCase();
+  const list = P.filter(x => (cat === "All" || x.c === cat) && x.n.toLowerCase().includes(q));
+  $("shopCount").textContent = list.length + (list.length === 1 ? " product" : " products");
+  $("shopNone").hidden = list.length > 0;
+  $("shopGrid").innerHTML = list.map(x => `<div class="prod" style="--tint:${x.col}22"><div class="art">${ART[x.a](x.col, x)}</div><h3>${x.n}</h3><p>${x.d}</p>
+    ${x.fl ? `<select id="fl-${x.id}" aria-label="Flavour for ${x.n}">${x.fl.map(f => `<option>${f}</option>`).join("")}</select>` : ""}
+    <div class="pr">${inr(x.p)}</div><button class="btn" type="button" data-add="${x.id}">Add to cart</button></div>`).join("");
+  bindTilt();
+}
+$("cats").addEventListener("click", e => { const b = e.target.closest("button[data-c]"); if (b){ cat = b.dataset.c; drawCats(); drawShop(); } });
+$("search").addEventListener("input", e => { qs = e.target.value; drawShop(); });
+$("clearSearch").addEventListener("click", () => { qs = ""; $("search").value = ""; drawShop(); $("search").focus(); });
+
+function addToCart(id, fl){
+  const k = id + "|" + (fl || ""), f = cart.find(i => i.k === k);
+  if (f) f.q = Math.min(f.q + 1, 20); else cart.push({ k, id, fl: fl || "", q: 1 });
+  persist(); drawCart(); toast("Added to cart");
+}
+$("shopGrid").addEventListener("click", e => {
+  const b = e.target.closest("button[data-add]"); if (!b) return;
+  const s = $("fl-" + b.dataset.add);
+  addToCart(b.dataset.add, s ? s.value : ""); fly(b);
+  b.classList.add("done"); b.textContent = "Added";
+  setTimeout(() => { b.classList.remove("done"); b.textContent = "Add to cart"; }, 1100);
+});
+
+function totals(){
+  const sub = cart.reduce((s, i) => s + prod(i).p * i.q, 0), disc = Math.round(sub * (CODES[coupon] || 0));
+  const ship = sub === 0 ? 0 : (sub - disc >= FREE_OVER ? 0 : SHIP);
+  return { sub, disc, ship, total: sub - disc + ship };
+}
+function drawCart(){
+  $("cartCount").textContent = cart.reduce((s, i) => s + i.q, 0);
+  const t = totals(), after = t.sub - t.disc, left = FREE_OVER - after;
+  $("cartItems").innerHTML = cart.length ? cart.map(i => { const x = prod(i); return `<div class="li"><div><b>${x.n}</b><br><small>${i.fl ? i.fl + ", " : ""}${inr(x.p)} each</small></div><b>${inr(x.p * i.q)}</b>
+    <div class="qty"><button type="button" data-dec="${i.k}" aria-label="Decrease quantity of ${x.n}">&minus;</button><span aria-live="polite">${i.q}</span><button type="button" data-inc="${i.k}" aria-label="Increase quantity of ${x.n}">+</button><button type="button" class="rm" data-rm="${i.k}" aria-label="Remove ${x.n}">Remove</button></div></div>`; }).join("")
+    : `<p class="empty">Your cart is empty. Pick something from the shop.</p>`;
+  $("cartRest").hidden = !cart.length;
+  $("freeship").innerHTML = cart.length ? `<p class="msg">${left > 0 ? "Add " + inr(left) + " more for free delivery" : "You get free delivery"}</p><div class="meter"><i style="--w:${Math.min(100, after / FREE_OVER * 100)}%"></i></div>` : "";
+  $("sum").innerHTML = `<div><span>Subtotal</span><span>${inr(t.sub)}</span></div>${t.disc ? `<div><span>Coupon ${coupon}</span><span>&minus;${inr(t.disc)}</span></div>` : ""}<div><span>Delivery</span><span>${t.ship ? inr(t.ship) : "Free"}</span></div><div class="tot"><span>Total</span><span>${inr(t.total)}</span></div>`;
+}
+$("cartItems").addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  const d = b.dataset, it = cart.find(i => i.k === (d.inc || d.dec || d.rm)); if (!it) return;
+  if (d.inc) it.q = Math.min(it.q + 1, 20); else if (d.dec) it.q -= 1; else it.q = 0;
+  cart = cart.filter(i => i.q > 0); persist(); drawCart();
+});
+$("clearCart").addEventListener("click", () => { cart = []; persist(); drawCart(); toast("Cart cleared"); });
+function applyCoupon(){
+  const c = $("coupon").value.trim().toUpperCase(), m = $("cpMsg");
+  if (CODES[c]){ coupon = c; m.className = "msg"; m.textContent = "Coupon applied."; }
+  else { coupon = ""; m.className = "msg err"; m.textContent = c ? "That code is not valid." : "Enter a code first."; }
+  drawCart();
+}
+$("applyCoupon").addEventListener("click", applyCoupon);
+$("coupon").addEventListener("keydown", e => { if (e.key === "Enter"){ e.preventDefault(); applyCoupon(); } });
+
+/* Cart drawer: the page behind it is made inert so focus stays inside */
+const shell = () => document.querySelectorAll("body > header, body > main, body > footer");
+const isOpen = () => $("drawer").classList.contains("open");
+function openCart(){
+  $("drawer").classList.add("open"); $("scrim").hidden = false;
+  shell().forEach(el => el.inert = true); document.body.style.overflow = "hidden";
+  $("closeCart").focus();
+}
+function closeCart(){
+  $("drawer").classList.remove("open"); $("scrim").hidden = true;
+  shell().forEach(el => el.inert = false); document.body.style.overflow = "";
+  $("cartBtn").focus();
+}
+$("cartBtn").addEventListener("click", openCart);
+$("closeCart").addEventListener("click", closeCart);
+$("scrim").addEventListener("click", closeCart);
+document.addEventListener("keydown", e => { if (e.key === "Escape" && isOpen() && !$("wa").open) closeCart(); });
+
+/* Checkout */
+function mobile10(v){
+  let d = v.replace(/\D/g, "");
+  if (d.length === 12 && d.startsWith("91")) d = d.slice(2); else if (d.length === 11 && d.startsWith("0")) d = d.slice(1);
+  return d;
+}
+function orderText(f){
+  const t = totals(), ref = "PL-" + Date.now().toString(36).slice(-5).toUpperCase();
+  const lines = cart.map(i => { const x = prod(i); return i.q + " x " + x.n + (i.fl ? " (" + i.fl + ")" : "") + " = " + inr(x.p * i.q); });
+  return ["Hi, I would like to place an order (ref " + ref + "):", ...lines, "", "Subtotal: " + inr(t.sub), t.disc ? "Coupon " + coupon + ": -" + inr(t.disc) : null, "Delivery: " + (t.ship ? inr(t.ship) : "Free"), "Total: " + inr(t.total), "", "Name: " + f.name, "Phone: " + f.phone, "Address: " + f.addr].filter(x => x !== null).join("\n");
+}
+$("co").addEventListener("input", e => e.target.removeAttribute("aria-invalid"));
+$("co").addEventListener("submit", e => {
+  e.preventDefault();
+  if (!cart.length) return;
+  const form = e.target, fd = new FormData(form), m = $("coMsg");
+  const f = { name: fd.get("name").trim(), phone: mobile10(fd.get("phone")), addr: fd.get("addr").trim() };
+  const fail = (field, text) => { form.elements[field].setAttribute("aria-invalid", "true"); form.elements[field].focus(); m.textContent = text; };
+  form.querySelectorAll("[aria-invalid]").forEach(el => el.removeAttribute("aria-invalid"));
+  if (!f.name) return fail("name", "Enter your name.");
+  if (!/^[6-9]\d{9}$/.test(f.phone)) return fail("phone", "Enter a 10-digit mobile number that starts with 6, 7, 8 or 9.");
+  if (f.addr.length < 8) return fail("addr", "Enter your full delivery address.");
+  m.textContent = "";
+  sendWA(orderText(f));
+});
+
+/* ============ Fly to cart, mobile menu ============ */
+function bump(){ if (!calm) $("cartCount").animate([{ transform:"scale(1)" }, { transform:"scale(1.7)" }, { transform:"scale(1)" }], { duration: 380 }); }
+function fly(btn){
+  if (calm) return;
+  const el = btn.closest(".prod").querySelector("svg"), c = $("cartBtn").getBoundingClientRect(), r = el.getBoundingClientRect();
+  const g = el.cloneNode(true);
+  Object.assign(g.style, { position:"fixed", left:r.left + "px", top:r.top + "px", width:r.width + "px", height:r.height + "px", zIndex:40, pointerEvents:"none" });
+  document.body.appendChild(g);
+  const dx = c.left + c.width / 2 - (r.left + r.width / 2), dy = c.top + c.height / 2 - (r.top + r.height / 2);
+  g.animate([
+    { transform:"translate(0,0) scale(1) rotate(0)", opacity:1 },
+    { transform:`translate(${dx * .5}px,${dy * .5 - 90}px) scale(.55) rotate(-14deg)`, opacity:1, offset:.55 },
+    { transform:`translate(${dx}px,${dy}px) scale(.05) rotate(-34deg)`, opacity:.3 }
+  ], { duration: 800, easing:"cubic-bezier(.5,0,.3,1)" }).onfinish = () => { g.remove(); bump(); };
+}
+const menu = $("menu"), menuBtn = $("menuBtn");
+function setMenu(o){ menu.classList.toggle("open", o); menuBtn.setAttribute("aria-expanded", o); menuBtn.textContent = o ? "Close" : "Menu"; }
+menuBtn.addEventListener("click", () => setMenu(!menu.classList.contains("open")));
+menu.addEventListener("click", e => { if (e.target.closest("a")) setMenu(false); });
+
+drawCats(); drawShop(); drawCart();
+</script>
+</body>
+</html>
